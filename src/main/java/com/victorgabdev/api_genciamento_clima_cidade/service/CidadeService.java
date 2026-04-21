@@ -29,7 +29,7 @@ public class CidadeService {
 
     }
 
-    public void validaExistenciaCidade(CidadeRequest cidadeRequest) {
+    private void validaExistenciaCidade(CidadeRequest cidadeRequest) {
         var cidade = repository.findByNomeAndEstadoAndPais(cidadeRequest.nome(), cidadeRequest.estado(), cidadeRequest.pais());
         if (cidade.isPresent()) throw new RuntimeException("Cidade ja Cadastrada");
     }

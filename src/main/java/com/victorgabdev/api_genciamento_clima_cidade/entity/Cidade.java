@@ -22,6 +22,8 @@ public class Cidade {
     private String pais;
     private LocalDateTime dataCadastro;
 
+    public Cidade() {}
+
     public Cidade(String nome, String estado, String pais, LocalDateTime dataCadastro) {
         this.nome = nome;
         this.estado = estado;
