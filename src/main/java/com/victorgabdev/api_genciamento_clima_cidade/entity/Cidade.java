@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(name = "tab_cidade")
 public class Cidade {
 
     @Id
@@ -20,8 +22,9 @@ public class Cidade {
     private String pais;
     private LocalDateTime dataCadastro;
 
-    public Cidade(UUID id, String nome, String estado, String pais, LocalDateTime dataCadastro) {
-        this.id = id;
+    public Cidade() {}
+
+    public Cidade(String nome, String estado, String pais, LocalDateTime dataCadastro) {
         this.nome = nome;
         this.estado = estado;
         this.pais = pais;
