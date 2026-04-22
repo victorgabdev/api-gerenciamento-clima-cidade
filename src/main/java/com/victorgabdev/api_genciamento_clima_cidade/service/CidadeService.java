@@ -3,8 +3,10 @@ package com.victorgabdev.api_genciamento_clima_cidade.service;
 import com.victorgabdev.api_genciamento_clima_cidade.dto.cidade.CidadeRequest;
 import com.victorgabdev.api_genciamento_clima_cidade.dto.cidade.CidadeResponse;
 import com.victorgabdev.api_genciamento_clima_cidade.entity.Cidade;
+import com.victorgabdev.api_genciamento_clima_cidade.exception.ApiException;
 import com.victorgabdev.api_genciamento_clima_cidade.mapper.CidadeMapper;
 import com.victorgabdev.api_genciamento_clima_cidade.repository.CidadeRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,7 +33,7 @@ public class CidadeService {
 
     private void validaExistenciaCidade(CidadeRequest cidadeRequest) {
         var cidade = repository.findByNomeAndEstadoAndPais(cidadeRequest.nome(), cidadeRequest.estado(), cidadeRequest.pais());
-        if (cidade.isPresent()) throw new RuntimeException("Cidade ja Cadastrada");
+        if (cidade.isPresent()) throw new ApiException("Cidade ja cadastrada", HttpStatus.BAD_REQUEST);
     }
 
 }
